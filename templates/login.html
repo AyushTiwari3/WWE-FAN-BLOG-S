@@ -1,0 +1,41 @@
+
+{% from "bootstrap/form.html" import render_form %}
+
+{% block content %}
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" id="ayush" style="background-image: url('/static/assets/img/login.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Log In</h1>
+            <span class="subheading">Welcome Back!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 col-md-10 mx-auto content">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+           <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+        {{ render_form(form) }}
+      </div>
+    </div>
+  </div>
+
+
+
+{% include "footer.html" %}
+{% endblock %}
