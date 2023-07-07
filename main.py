@@ -10,14 +10,16 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from form import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 import smtplib
+import os 
+import MySQLdb
 MY_EMAIL = "katilpythontest@gmail.com"
-MY_PASSWORD = "bbshoiqsgoebskmo"
+MY_PASSWORD =os.environ.get("password")
 R_EMAIL="tiwariayush222@gmail.com"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 bootsrtap=Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wwe.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1wZalxwpzHWXGi6aBMeQ@containers-us-west-14.railway.app:6897/railway'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
