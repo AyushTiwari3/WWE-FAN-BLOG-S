@@ -11,7 +11,7 @@ from form import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 import smtplib
 import os 
-import MySQLdb
+
 MY_EMAIL = "katilpythontest@gmail.com"
 MY_PASSWORD = "bbshoiqsgoebskmo"
 R_EMAIL="tiwariayush222@gmail.com"
