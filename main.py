@@ -13,13 +13,13 @@ import smtplib
 import os 
 import MySQLdb
 MY_EMAIL = "katilpythontest@gmail.com"
-MY_PASSWORD =os.environ.get("password")
+MY_PASSWORD = "bbshoiqsgoebskmo"
 R_EMAIL="tiwariayush222@gmail.com"
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 bootsrtap=Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1wZalxwpzHWXGi6aBMeQ@containers-us-west-14.railway.app:6897/railway'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://admin_2twy_user:eRlcHpEz7rRFXZpdpQNZTsHwtGoAZwXa@dpg-cikf9j15rnuvtgvcu8l0-a.oregon-postgres.render.com/admin_2twy'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
@@ -59,6 +59,9 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
     comment_author = relationship("User", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
+
+with app.app_context():
+    db.create_all()
 
 
 def admin_only(f):
