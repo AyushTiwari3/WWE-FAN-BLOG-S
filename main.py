@@ -78,7 +78,7 @@ def admin_only(f):
 
 
 
-@app.route('/',methods=["GET"])
+@app.route('/',methods=["GET",'POST'])
 def get_all_posts():
     posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts,current_user=current_user)
@@ -103,7 +103,7 @@ def add_new_post():
     return render_template("make-post.html", form=form, current_user=current_user)
 
 
-@app.route('/login',methods=['GET'])
+@app.route('/login',methods=['GET','POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -123,7 +123,7 @@ def login():
             return redirect(url_for('get_all_posts'))
     return render_template("login.html", form=form, current_user=current_user)
 
-@app.route('/register', methods=["GET"])
+@app.route('/register', methods=["GET",'POST'])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -235,4 +235,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=63215)
