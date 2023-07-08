@@ -12,6 +12,7 @@ from flask_gravatar import Gravatar
 import smtplib
 import os 
 import psycopg2
+from markupsafe import escape
 MY_EMAIL = "katilpythontest@gmail.com"
 MY_PASSWORD = "bbshoiqsgoebskmo"
 R_EMAIL="tiwariayush222@gmail.com"
