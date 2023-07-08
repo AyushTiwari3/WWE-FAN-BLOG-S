@@ -19,7 +19,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 bootsrtap=Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://admin_2twy_user:eRlcHpEz7rRFXZpdpQNZTsHwtGoAZwXa@dpg-cikf9j15rnuvtgvcu8l0-a.oregon-postgres.render.com/admin_2twy'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin_2twy_user:eRlcHpEz7rRFXZpdpQNZTsHwtGoAZwXa@dpg-cikf9j15rnuvtgvcu8l0-a.oregon-postgres.render.com/admin_2twy'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
