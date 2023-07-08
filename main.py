@@ -103,7 +103,7 @@ def add_new_post():
     return render_template("make-post.html", form=form, current_user=current_user)
 
 
-@app.route('/login',methods=['GET','POST'])
+@app.route('/login',methods=['GET'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -123,7 +123,7 @@ def login():
             return redirect(url_for('get_all_posts'))
     return render_template("login.html", form=form, current_user=current_user)
 
-@app.route('/register', methods=["GET", "POST"])
+@app.route('/register', methods=["GET"])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
