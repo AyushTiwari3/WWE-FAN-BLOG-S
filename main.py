@@ -60,8 +60,8 @@ class Comment(db.Model):
     comment_author = relationship("User", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 def admin_only(f):
