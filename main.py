@@ -30,7 +30,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class BlogPost(db.Model):  # Child
+class BlogPost(db.Model):  
     __tablename__ = "blog_posts"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), unique=True, nullable=False)
