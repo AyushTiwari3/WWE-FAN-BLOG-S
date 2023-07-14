@@ -10,8 +10,6 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from form import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
 import smtplib
-import os 
-import psycopg2
 from markupsafe import escape
 MY_EMAIL = "katilpythontest@gmail.com"
 MY_PASSWORD = "bbshoiqsgoebskmo"
