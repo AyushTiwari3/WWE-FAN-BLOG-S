@@ -85,10 +85,10 @@ def get_all_posts():
 def add_new_post():
     if request.method=='POST':
         new_post = BlogPost(
-            title=request.form.title.data,
-            subtitle=request.form.subtitle.data,
-            body=request.form.body.data,
-            img_url=request.form.img_url.data,
+            title=request.form['title'],
+            subtitle=request.form['subtitle'],
+            body=request.form['body'],
+            img_url=request.form['img_url'],
             author=current_user,
             date=date.today().strftime("%B %d, %Y")
         )
