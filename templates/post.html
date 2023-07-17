@@ -41,7 +41,42 @@
 
                 {{ ckeditor.load() }}
                 {{ ckeditor.config(name='comment_text') }}
-
+                <div class="my-5">
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * Simplified SB Contact Form for the Tutorial* *-->
+                    <form 
+                      id="contactForm"
+                      name="sentMessage"
+                      action="{{ url_for('show_post') }}"
+                      method="post"
+                    >   
+                      </div>
+                      <div class="form-floating">
+                        <label for="message">Comment</label>
+                        <textarea
+                          class="form-control"
+                          id="message"
+                          name="comment_text"
+                          placeholder="Enter your comment here..."
+                          required
+                          style="height: 12rem"
+                        ></textarea>
+                        
+                      </div>
+                      <br />
+                      <button
+                        class="btn btn-primary text-uppercase"
+                        id="submitButton"
+                        type="submit"
+                      >
+                        Submit Comment
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
                
                     <div class="col-lg-8 col-md-10 mx-auto comment com3 " style="margin-left: 0px;">
                     {% for comment in post.comments: %}
