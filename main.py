@@ -92,7 +92,7 @@ def add_new_post():
             author=current_user,
             date=date.today().strftime("%B %d, %Y")
         )
-        db.session.add(new_post)
+        db.session.add(new_post )
         db.session.commit()
         return redirect(url_for("get_all_posts"))
 
