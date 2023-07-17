@@ -122,23 +122,22 @@ def login():
 
 @app.route('/register', methods=["GET",'POST'])
 def register():
-    form = RegisterForm()
-    if form.validate_on_submit():
+    if request.method == 'post':
 
-        if User.query.filter_by(email=form.email.data).first():
-            print(User.query.filter_by(email=form.email.data).first())
+        if User.query.filter_by(email=request.form.email.data).first():
+            print(User.query.filter_by(email=request.form.email.data).first())
             #User already exists
             flash("You've already signed up with that email, log in instead!")
             return redirect(url_for('login'))
 
         hash_and_salted_password = generate_password_hash(
-            form.password.data,
+            request.form.password.data,
             method='pbkdf2:sha256',
             salt_length=8
         )
         new_user = User(
-            email=form.email.data,
-            name=form.name.data,
+            email=request.form.email.data,
+            name=request.form.name.data,
             password=hash_and_salted_password,
         )
         db.session.add(new_user)
@@ -146,7 +145,7 @@ def register():
         login_user(new_user)
         return redirect(url_for("get_all_posts"))
 
-    return render_template("register.html", form=form, current_user=current_user)
+    return render_template("register.html", current_user=current_user)
 
 
 
