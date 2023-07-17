@@ -103,7 +103,7 @@ def add_new_post():
 @app.route('/login',methods=['GET','POST'])
 def login():
     
-    if request.form.method == 'post':
+    if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
@@ -122,14 +122,13 @@ def login():
 
 @app.route('/register', methods=["GET",'POST'])
 def register():
-    if request.form.method =='post':
+    if request.method =='POST':
 
         if User.query.filter_by(email=request.form['email']).first():
             print(User.query.filter_by(email=request.form['email']).first())
             #User already exists
             flash("You've already signed up with that email, log in instead!")
             return redirect(url_for('login'))
-
         hash_and_salted_password = generate_password_hash(
             request.form['password'],
             method='pbkdf2:sha256',
