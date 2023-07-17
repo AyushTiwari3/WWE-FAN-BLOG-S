@@ -152,19 +152,22 @@ def register():
 @admin_only
 def edit_post(post_id):
     post = BlogPost.query.get(post_id)
-    if request.method=='POST':
-        edit_post = BlogPost(
-            title=post['title'],
-            subtitle=post['subtitle'],
-            body=post['body'],
-            img_url=post['img_url'],
-            author=current_user,
-        )
-        db.session.add(edit_post)
+    edit_form = CreatePostForm(
+        title=post.title,
+        subtitle=post.subtitle,
+        img_url=post.img_url,
+        author=current_user,
+        body=post.body
+    )
+    if edit_form.validate_on_submit():
+        post.title = edit_form.title.data
+        post.subtitle = edit_form.subtitle.data
+        post.img_url = edit_form.img_url.data
+        post.body = edit_form.body.data
         db.session.commit()
-        return redirect(url_for("get_all_posts"))
+        return redirect(url_for("show_post", post_id=post.id))
 
-    return render_template("make-post.html", is_edit=True, current_user=current_user)
+    return render_template("make-post.html", form=edit_form, is_edit=True, current_user=current_user)
 
 
 @app.route("/post/<int:post_id>",methods=['GET','POST'])
