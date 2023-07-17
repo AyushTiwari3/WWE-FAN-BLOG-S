@@ -19,10 +19,5 @@
 }
 
 .com1{
-  display: flex; flex-direction: column; align-items: left; justify-content: left;
-}
-
-
-#comm{
-  margin-left: 8rem;margin-top: -5rem;
+  display: flex; flex-direction: column; align-items: left; justify-content: left;margin-left: 8rem;margin-top: -5rem;
 }
