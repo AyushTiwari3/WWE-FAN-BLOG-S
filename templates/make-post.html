@@ -1,5 +1,5 @@
 
-{% from"bootstrap/form.html"import render_form %}
+
 
 {% block content %}
 {% include "header.html" %}
@@ -28,7 +28,78 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        {{ render_form(form) }}
+        <div class="my-5">
+          <!-- * * * * * * * * * * * * * * *-->
+          <!-- * * Simplified SB Contact Form for the Tutorial* *-->
+          <form 
+            id="contactForm"
+            name="sentMessage"
+            action="{{ url_for('add_new_post') }}"
+            method="post"
+          >
+            <div class="form-floating">
+              <label for="name">Blog Post Title</label>
+              <input
+                class="form-control"
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Enter your name..."
+                required
+              />
+              
+            </div>
+            <div class="form-floating">
+              <label for="email">Subtitle</label>
+              <input
+                class="form-control"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email..."
+                required
+              />
+              
+            </div>
+            <div class="form-floating">
+              <label for="phone">Blog Image URL</label>
+              <input
+                type="url"
+                class="form-control"
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="Enter image url"
+                required
+              />
+              
+            </div>
+            <div class="form-floating">
+              <label for="message">Blog Content</label>
+              <textarea
+                class="form-control"
+                id="message"
+                name="message"
+                placeholder="Enter your message here..."
+                required
+                style="height: 12rem"
+              ></textarea>
+              
+            </div>
+            <br />
+            <button
+              class="btn btn-primary text-uppercase"
+              id="submitButton"
+              type="submit"
+            >
+              Submit Post
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
       </div>
     </div>
   </div>

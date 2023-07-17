@@ -83,13 +83,12 @@ def get_all_posts():
 @app.route("/new-post", methods=["GET", "POST"])
 @admin_only
 def add_new_post():
-    form = CreatePostForm()
-    if form.validate_on_submit():
+    if request.method=='POST':
         new_post = BlogPost(
-            title=form.title.data,
-            subtitle=form.subtitle.data,
-            body=form.body.data,
-            img_url=form.img_url.data,
+            title=request.form.title.data,
+            subtitle=request.form.subtitle.data,
+            body=request.form.body.data,
+            img_url=request.form.img_url.data,
             author=current_user,
             date=date.today().strftime("%B %d, %Y")
         )
@@ -97,7 +96,7 @@ def add_new_post():
         db.session.commit()
         return redirect(url_for("get_all_posts"))
 
-    return render_template("make-post.html", form=form, current_user=current_user)
+    return render_template("make-post.html",current_user=current_user)
 
 
 @app.route('/login',methods=['GET','POST'])
