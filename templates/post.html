@@ -1,5 +1,5 @@
 
-<!-- {% from "bootstrap/form.html" import render_form %} -->
+
 
 {% block content %}
 {% include "header.html" %}
@@ -42,7 +42,7 @@
                 {{ ckeditor.load() }}
                 {{ ckeditor.config(name='comment_text') }}
 
-               <!-- <div>{{ render_form(form) }} -->
+               
                     <div class="col-lg-8 col-md-10 mx-auto comment com3 " style="margin-left: 0px;">
                     {% for comment in post.comments: %}
                     <ul class="commentList flex" >
