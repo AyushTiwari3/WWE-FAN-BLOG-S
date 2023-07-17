@@ -102,10 +102,10 @@ def add_new_post():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        email = form.email.data
-        password = form.password.data
+    
+    if request.form.validate_on_submit():
+        email = request.form.email.data
+        password = request.form.password.data
 
         user = User.query.filter_by(email=email).first()
         # Email doesn't exist or password incorrect.

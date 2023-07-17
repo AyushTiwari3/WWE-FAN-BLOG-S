@@ -1,5 +1,5 @@
 
-{% from "bootstrap/form.html" import render_form %}
+
 
 {% block content %}
 {% include "header.html" %}
@@ -30,7 +30,47 @@
           {% endfor %}
         {% endif %}
       {% endwith %}
-        {{ render_form(form) }}
+      <form 
+    >
+        
+      </div>
+      <div class="form-floating">
+        <label for="email">Email address</label>
+        <input
+          class="form-control"
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Enter your email..."
+          required
+        />
+        
+      </div>
+      <div class="form-floating">
+        <label for="phone">Password</label>
+        <input
+          class="form-control"
+          id="password"
+          name="password"
+          type="tel"
+          placeholder="Password"
+          required
+        />  
+      </div>
+      <br />
+      <button
+        class="btn btn-primary text-uppercase"
+        id="submitButton"
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</main>
       </div>
     </div>
   </div>
