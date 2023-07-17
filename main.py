@@ -175,7 +175,7 @@ def edit_post(post_id):
 def show_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     
-    if request.method=='GET':
+    if request.method=='POST':
         if not current_user.is_authenticated:
             flash("You need to login or register to comment.")
             return redirect(url_for("login"))
