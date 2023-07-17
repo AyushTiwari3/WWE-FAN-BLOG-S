@@ -103,7 +103,7 @@ def add_new_post():
 @app.route('/login',methods=['GET','POST'])
 def login():
     
-    if request.method == 'post':
+    if request.form.method == 'post':
         email = request.form['email']
         password = request.form['password']
 
@@ -122,7 +122,7 @@ def login():
 
 @app.route('/register', methods=["GET",'POST'])
 def register():
-    if request.method == 'post':
+    if request.form.method =='post':
 
         if User.query.filter_by(email=request.form['email']).first():
             print(User.query.filter_by(email=request.form['email']).first())
