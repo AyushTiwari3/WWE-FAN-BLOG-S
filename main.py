@@ -59,8 +59,8 @@ class Comment(db.Model):
     comment_author = relationship("User", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 def admin_only(f):
@@ -136,7 +136,7 @@ def register():
             salt_length=8
         )
         new_user = User(
-            email=request['form.email'],
+            email=request.form['email'],
             name=request.form['name'],
             password=hash_and_salted_password,
         )
