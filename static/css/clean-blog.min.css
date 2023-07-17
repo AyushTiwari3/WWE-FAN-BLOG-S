@@ -19,7 +19,11 @@
 }
 
 .com1{
-  display: flex; flex-direction: column; align-items: left; justify-content: left;
+  display: flex; flex-direction: column; align-items: left; justify-content: left;  
+  margin-left: 8rem;
+  margin-top: -5rem;
+
+
 
 }
 
