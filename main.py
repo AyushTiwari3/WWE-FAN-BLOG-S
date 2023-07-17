@@ -103,7 +103,7 @@ def add_new_post():
 @app.route('/login',methods=['GET','POST'])
 def login():
     
-    if request.form.validate_on_submit():
+    if request.method == 'post':
         email = request.form.email.data
         password = request.form.password.data
 
