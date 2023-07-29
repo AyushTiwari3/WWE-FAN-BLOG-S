@@ -195,21 +195,26 @@ def about():
     return render_template("about.html",current_user=current_user)
       
 @app.route("/contact", methods=["GET", "POST"])
-@login_required
+
 def contact():
-    if request.method == "POST":
-        name=request.form["name"]
-        email=request.form["email"]
-        phone=request.form["phone"]
-        message=request.form["message"]
-        with smtplib.SMTP_SSL("smtp.googlemail.com") as connection:
-            connection.login(MY_EMAIL, MY_PASSWORD)
-            connection.sendmail(
-                    from_addr=MY_EMAIL,
-                    to_addrs=R_EMAIL,
-                    msg=f"Subject: Details!!! \n\nName:{name}\nE-mail:{email}\nPhone no.:{phone}\nMessage:{message}"
-            )
-        return render_template("contact.html", msg_sent=True)
+    if not current_user.is_authenticated:
+        flash("You need to login or register to comment.")
+        return redirect(url_for('login'))
+    
+    else:
+        if request.method == "POST":
+            name=request.form["name"]
+            email=request.form["email"]
+            phone=request.form["phone"]
+            message=request.form["message"]
+            with smtplib.SMTP_SSL("smtp.googlemail.com") as connection:
+                    connection.login(MY_EMAIL, MY_PASSWORD)
+                    connection.sendmail(
+                            from_addr=MY_EMAIL,
+                            to_addrs=R_EMAIL,
+                        msg=f"Subject: Details!!! \n\nName:{name}\nE-mail:{email}\nPhone no.:{phone}\nMessage:{message}"
+                )
+            return render_template("contact.html", msg_sent=True)
     return render_template("contact.html", msg_sent=False)
 
 
