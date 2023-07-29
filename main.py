@@ -198,7 +198,7 @@ def about():
 
 def contact():
     if not current_user.is_authenticated:
-        flash("You need to login or register to comment.")
+        flash("You need to login or register to contact.")
         return redirect(url_for('login'))
     
     else:
