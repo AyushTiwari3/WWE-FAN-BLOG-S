@@ -81,7 +81,7 @@ def get_all_posts():
     return render_template("index.html", all_posts=posts,current_user=current_user)
 
 @app.route("/new-post", methods=["GET", "POST"])
-@admin_only
+
 def add_new_post():
     if not current_user.is_authenticated:
         # User is not logged in, redirect to the login page
