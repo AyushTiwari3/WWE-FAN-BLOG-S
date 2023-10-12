@@ -83,7 +83,12 @@ def get_all_posts():
 @app.route("/new-post", methods=["GET", "POST"])
 @admin_only
 def add_new_post():
-    if request.method=='POST':
+    if not current_user.is_authenticated:
+        # User is not logged in, redirect to the login page
+        flash("You need to login to create a new post.")
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
         new_post = BlogPost(
             title=request.form['title'],
             subtitle=request.form['subtitle'],
@@ -92,11 +97,11 @@ def add_new_post():
             author=current_user,
             date=date.today().strftime("%B %d, %Y")
         )
-        db.session.add(new_post )
+        db.session.add(new_post)
         db.session.commit()
         return redirect(url_for("get_all_posts"))
 
-    return render_template("make-post.html",current_user=current_user)
+    return render_template("make-post.html", current_user=current_user)
 
 
 @app.route('/login',methods=['GET','POST'])
