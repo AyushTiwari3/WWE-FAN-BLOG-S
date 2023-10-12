@@ -103,7 +103,6 @@ def add_new_post():
 
     return render_template("make-post.html", current_user=current_user)
 
-
 @app.route('/login',methods=['GET','POST'])
 def login():
     
