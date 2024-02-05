@@ -18,7 +18,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 bootsrtap=Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wwe_fan_blog_database_user:6DpK8ouofY2z02QU2THb4QfVNfyd8v6I@dpg-ckindr0mccbs73au0qa0-a/wwe_fan_blog_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wwe_fan_user:IwjyQwuIfdRDP3rs9fbbPYzbrEnnGM1m@dpg-cn0irjud3nmc738bcfag-a/wwe_fan'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
